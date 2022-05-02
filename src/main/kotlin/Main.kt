@@ -1,13 +1,13 @@
 fun main(args: Array<String>) {
     val reader = FileReader();
 
-    println(reader.getPuzzle1())
-    //println(reader.getPuzzle2())
+//    println(reader.getPuzzle1())
+    println(reader.getPuzzle2())
     //println(reader.getPuzzle3())
     //println(reader.getPuzzle4Numbers())
     //println(reader.getPuzzle4Cards())
 
-    puzzleTwo()
+    dayTwoPuzzleOne()
 }
 
 fun puzzleOne(){
@@ -78,4 +78,34 @@ fun puzzleTwo(){
     }
 
     println(answer)
+}
+
+fun dayTwoPuzzleOne(){
+    var list = FileReader().getPuzzle2()
+
+    var down: Int = 0
+    var up: Int = 0
+
+    var forward: Int = 0
+
+    var currentIndex = 0
+
+    for (move in list){
+        var currentMove = list.elementAt(currentIndex)
+        var currentDirection = currentMove.elementAt(0)
+        var currentNumber = currentMove.elementAt(1)
+        println(currentNumber)
+
+        if (currentDirection == "down"){
+            down += currentNumber as Int
+        } else if (currentDirection == "up"){
+            up += currentNumber as Int
+        } else {
+            forward += currentNumber as Int
+        }
+
+        currentIndex++
+    }
+    var sum = (down - up) * forward
+    println(sum)
 }
