@@ -7,7 +7,7 @@ fun main(args: Array<String>) {
     //println(reader.getPuzzle4Numbers())
     //println(reader.getPuzzle4Cards())
 
-    dayThreePuzzleOne()
+    dayThreePuzzleTwo()
 }
 
 fun puzzleOne(){
@@ -184,4 +184,40 @@ fun dayThreePuzzleOne (){
     //1869
     println(epsilon)
     //2226
+}
+
+fun dayThreePuzzleTwo(){
+    var list = FileReader().getPuzzle3()
+
+    var saveOxygen: MutableList<Array<Int>> = mutableListOf()
+
+    val indexes = intArrayOf(0,1,2,3,4,5,6,7,8,9,10,11)
+
+    var isZero: Int = 0
+    var isOne: Int = 0
+
+    for (index in indexes) {
+        for (number in list) {
+
+            number.toIntArray()
+
+            if (number[index] == 0){
+                isZero++
+            } else {
+                isOne++
+            }
+        }
+
+        if (isZero > isOne){
+            for (number in list){
+                if (number[index] == 0){
+                    saveOxygen.add(number)
+                }
+            }
+        } else {
+        }
+
+        isOne = 0
+        isZero = 0
+    }
 }
