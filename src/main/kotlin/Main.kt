@@ -2,12 +2,12 @@ fun main(args: Array<String>) {
     val reader = FileReader();
 
 //    println(reader.getPuzzle1())
-    println(reader.getPuzzle2())
-    //println(reader.getPuzzle3())
+//    println(reader.getPuzzle2())
+    println(reader.getPuzzle3())
     //println(reader.getPuzzle4Numbers())
     //println(reader.getPuzzle4Cards())
 
-    dayTwoPuzzleOne()
+    dayThreePuzzleOne()
 }
 
 fun puzzleOne(){
@@ -108,4 +108,80 @@ fun dayTwoPuzzleOne(){
     }
     var sum = (down - up) * forward
     println(sum)
+}
+
+fun dayTwoPuzzleTwo(){
+    var list = FileReader().getPuzzle2()
+
+    var down: Int = 0
+    var up: Int = 0
+    var forward: Int = 0
+
+    var aim = 0
+    var depth = 0
+
+    var currentIndex = 0
+
+    for (move in list){
+        var currentMove = list.elementAt(currentIndex)
+        var currentDirection = currentMove.elementAt(0)
+        var currentNumber = currentMove.elementAt(1)
+        println(currentNumber)
+
+        if (currentDirection == "down"){
+            down += currentNumber as Int
+            aim += currentNumber as Int
+        } else if (currentDirection == "up"){
+            up += currentNumber as Int
+            aim -= currentNumber as Int
+        } else {
+            forward += currentNumber as Int
+            depth += currentNumber as Int * aim
+        }
+
+        currentIndex++
+    }
+    var sum = forward * depth
+    println(sum)
+}
+
+fun dayThreePuzzleOne (){
+    var list = FileReader().getPuzzle3()
+
+    val indexes = intArrayOf(0,1,2,3,4,5,6,7,8,9,10,11)
+
+    var gamma: MutableList<Int> = mutableListOf()
+    var epsilon: MutableList<Int> = mutableListOf()
+
+    var isZero: Int = 0
+    var isOne: Int = 0
+
+    for (index in indexes) {
+        for (number in list) {
+
+            number.toIntArray()
+
+            if (number[index] == 0){
+                isZero++
+            } else {
+                isOne++
+            }
+        }
+
+        if (isZero > isOne){
+            gamma.add(0)
+            epsilon.add(1)
+        } else {
+            gamma.add(1)
+            epsilon.add(0)
+        }
+
+        isOne = 0
+        isZero = 0
+    }
+
+    println(gamma)
+    //1869
+    println(epsilon)
+    //2226
 }
